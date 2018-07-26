@@ -11,4 +11,47 @@
 
 \section{Introduction}
 
+\section{Tools}
+Io pensavo a questa selezione di tools (se ne conoscete altri aggiungete pure):
+
+Bulk Sequencing:
+- CITUP https://academic.oup.com/bioinformatics/article/31/9/1349/200674
+- Lichee https://genomebiology.biomedcentral.com/articles/10.1186/s13059-015-0647-8
+- SPRUCE (?) https://www.cell.com/cell-systems/abstract/S2405-4712(16)30221-6
+
+Single Cell:
+- SCITE https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0936-x
+- SiFit https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1311-2
+
+Bulk + Single Cell (?):
+- B-SCITE https://www.biorxiv.org/content/early/2017/12/15/234914
+- ddclone https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1169-3
+
+Più i nostri tools
+
+\section{Datasets}
+
+Per rispondere a Simone, noi abbiamo buoni algoritmi per la generazione di dataset binari sia single-cell che multi-region, con vari modelli di rumore/missing data, ecc. Per le altre tipologie di dato/sampling bisogna capire che fare, sicuramente non reinventare la ruota, ma magari affidarsi a tecniche già esistenti.
+\textbf{decidere per la parte sopra}
+
+Infine, per rispondere a Gianluca, il dato di TRACERx, che abbiamo già analizzato con i nostri tool in via preliminare, è un ottimo punto di partenza per testare le varie tecniche dal punto di vista applicativo, ma è un dato con peculiarità ben precise: dato bulk multi region di pazienti multipli di lung cancer. Non tutti gli algoritmi possono essere utilizzati con quel tipo di dato e anche l’output stesso può essere consistentemente diverso a seconda del goal (e.g., un modello per paziente? Un modello unico per la coorte in cui evidenziare regolarità? Filogenia/mutational tree/clonal tree? ecc.).
+
+\section{Experiment sketch}
+
+A mio parere è opportuno partizionare il tutto in casi relativamente
+omogenei ed evitare confronti fra casi. In altre parole, confronterei
+separatamente bulk da single cell.
+
+Per semplicità, almeno in una prima fase, mi concentrerei solo su
+singolo paziente: credo sia già abbastanza. Inoltre su più pazienti
+entrano in gioco una serie di fattori confondenti che sono delicati da
+trattare.
+
+Personalmente mi concentrerei su avere nodi che sono celle/cloni (dal
+mio punto di vista la distinzione fra questi è artificiale), anche per
+avere maggiore supporto, dal punto di vista della valutazione, dalla
+letteratura in filogenetica.
+
+
+
 \end{document}
