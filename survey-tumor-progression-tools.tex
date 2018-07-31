@@ -31,10 +31,40 @@ Più i nostri tools
 
 \section{Datasets}
 
-Per rispondere a Simone, noi abbiamo buoni algoritmi per la generazione di dataset binari sia single-cell che multi-region, con vari modelli di rumore/missing data, ecc. Per le altre tipologie di dato/sampling bisogna capire che fare, sicuramente non reinventare la ruota, ma magari affidarsi a tecniche già esistenti.
-\textbf{decidere per la parte sopra}
+\subsection{Synthetic datasets}
+\textcolor{red}{[AG: SKETCH]}
 
-Infine, per rispondere a Gianluca, il dato di TRACERx, che abbiamo già analizzato con i nostri tool in via preliminare, è un ottimo punto di partenza per testare le varie tecniche dal punto di vista applicativo, ma è un dato con peculiarità ben precise: dato bulk multi region di pazienti multipli di lung cancer. Non tutti gli algoritmi possono essere utilizzati con quel tipo di dato e anche l’output stesso può essere consistentemente diverso a seconda del goal (e.g., un modello per paziente? Un modello unico per la coorte in cui evidenziare regolarità? Filogenia/mutational tree/clonal tree? ecc.).
+To assess and compare the performance of the selected algorithmic approaches, we generated large-scale batches of independent datasets, from random generative models with distinct topological properties. 
+
+In particular, we employed distinct classes of tree/graphs with various levels of topological complexity (e.g., linear/branching evolution scenarios, single/multiple roots, etc.), different size (i.e., number of nodes), for both the single-cell and the multi-region scenarios. 
+
+Large number of independnet binary datasets (1 mutation present/0 absent, either in a single cell or a specific region) with distinct sample size were generated from such models. 
+False positives (i.e., false alleles), false negatives (i.e., allele dropouts) and missing data were introduced in the data, with rates in ranges consistent with current experimental data, to test the robustness of the different approaches. 
+
+The capability of the selected algorithms to infer the generative model (i.e., the ground truth) w.r.t. distinct parameter settings was finally assessed via standard measures such as sensitivity, specificiy and overall accuracy. 
+
+
+%Per rispondere a Simone, noi abbiamo buoni algoritmi per la generazione di dataset binari sia single-cell che multi-region, con vari modelli di rumore/missing data, ecc. Per le altre tipologie di dato/sampling bisogna capire che fare, sicuramente non reinventare la ruota, ma magari affidarsi a tecniche già esistenti.
+%\textbf{decidere per la parte sopra}
+
+%Infine, per rispondere a Gianluca, il dato di TRACERx, che abbiamo già analizzato con i nostri tool in via preliminare, è un ottimo punto di partenza per testare le varie tecniche dal punto di vista applicativo, ma è un dato con peculiarità ben precise: dato bulk multi region di pazienti multipli di lung cancer. Non tutti gli algoritmi possono essere utilizzati con quel tipo di dato e anche l’output stesso può essere consistentemente diverso a seconda del goal (e.g., un modello per paziente? Un modello unico per la coorte in cui evidenziare regolarità? Filogenia/mutational tree/clonal tree? ecc.).
+
+\subsection{Real datasets}
+\textcolor{red}{[AG: SKETCH]}
+
+In order to compare the inference outcome of the selected algorithms on real-world data, we employed one of the largest multi-region cohorts currently available, i.e., the \emph{TRACERx} study on non-small cell lung cancer (NSCLC) presented in \cite{jamal2017tracking}. 
+
+In the study, whole-exome sequencing on multiple regions collected from each tumor of 100 untreated NSCLC patients was performed (via Illumina HiSeq). 
+327 tumor regions in total were sequenced, including 323 primary tumor regions and 4 lymph-node metastases, ranging from 2 to 8 regions per single tumor (median 3).
+
+487  driver mutations, involving 130 distinct genes, were identified and used in the analysis, by merging the information retrieved from: $i)$ the reference article \cite{jamal2017tracking}, $ii)$ recent pan-cancer studies \cite{lawrence2014discovery}, $iii)$ previuos large-scale sequencing studies on lung cancer \cite{cancer2012comprehensive,cancer2014comprehensive}, and $iv)$ the identification of oncogenes and tumor suppressor genes  via COSMIC (v75) \cite{forbes2016cosmic}.
+
+Alternatevely, one could consider as driver only those mutations occurring in at least $\Theta$ patients. 
+
+Cancer Cell Fraction (CCF) data were retrieved from the supplementary data of \cite{jamal2017tracking} (Table S3 -- file: nejmoa1616288 appendix 2.xlsx) for both single nucelotide mutations and copy number alterations.
+
+As certain algorithmic approaches require binary input data, a treshold on CCFs was set equal to $\theta$ for all drivers, and used in the analysis. 
+
 
 \section{Experiment sketch}
 
@@ -52,6 +82,6 @@ mio punto di vista la distinzione fra questi è artificiale), anche per
 avere maggiore supporto, dal punto di vista della valutazione, dalla
 letteratura in filogenetica.
 
-
+\bibliography{review_inference}
 
 \end{document}
